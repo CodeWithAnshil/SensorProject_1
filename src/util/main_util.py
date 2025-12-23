@@ -8,7 +8,7 @@ from typing import Dict, Tuple
 
 from src.constant  import *
 from src.exception import CustomException
-from src.logging import logging
+from src.logger import logging
 
 
 class MainUtils:
