@@ -1,0 +1,365 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* Navbar */
+/* ==========================
+   STICKY NAVBAR
+========================== */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Shadow when scrolling */
+.navbar.scrolled {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.logo span {
+    color: #00eaff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ddd;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #00eaff;
+}
+
+/* ==========================
+   HOME SECTION
+========================== */
+
+.home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    background:
+        radial-gradient(circle at top, rgba(0, 234, 255, 0.12), transparent 60%);
+}
+
+.home-content {
+    max-width: 900px;
+}
+
+.home h1 {
+    font-size: 44px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.home p {
+    font-size: 16.5px;
+    color: #cfd8dc;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+/* Buttons */
+.home-buttons {
+    margin-bottom: 45px;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    margin: 8px;
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00eaff, #00bcd4);
+    color: #000;
+}
+
+.btn-secondary {
+    border: 1px solid #00eaff;
+    color: #00eaff;
+}
+
+.btn-secondary:hover {
+    background: #00eaff;
+    color: #000;
+}
+
+/* Feature Cards */
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 234, 255, 0.15);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+}
+
+.feature-card h3 {
+    color: #00eaff;
+    margin-bottom: 8px;
+}
+
+.feature-card p {
+    font-size: 14.5px;
+    color: #d0d8dc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home h1 {
+        font-size: 34px;
+    }
+}
+
+
+/* Main Container */
+.container {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.content {
+    max-width: 600px;
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    color: #cfd8dc;
+    margin-bottom: 30px;
+}
+
+/* Upload Card */
+.upload-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Dropzone */
+.dropzone {
+    border: 2px dashed #00eaff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+
+.dropzone img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.dropzone p {
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.dropzone span {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* File Input */
+.file-label {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: #00eaff;
+    color: #000;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.file-label input {
+    display: none;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #00eaff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00bcd4;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+
+/* =========================
+   ABOUT PROJECT SECTION
+========================= */
+
+.about {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    animation: fadeUp 0.8s ease-in-out;
+}
+
+.about h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #00eaff;
+}
+
+.about h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    position: relative;
+}
+
+.about h3::after {
+    content: "";
+    width: 60px;
+    height: 3px;
+    background: #00eaff;
+    display: block;
+    margin-top: 6px;
+    border-radius: 3px;
+}
+
+.about p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #d0d8dc;
+    margin-top: 10px;
+}
+
+/* Tech Stack List */
+.about ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.about ul li {
+    padding: 8px 0;
+    font-size: 15px;
+    color: #e0f7fa;
+    position: relative;
+    padding-left: 22px;
+}
+
+.about ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #00eaff;
+    font-size: 14px;
+}
+
+/* Hover Effect */
+.about:hover {
+    transform: translateY(-4px);
+    transition: 0.3s ease;
+}
+
+/* Animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about {
+        padding: 25px;
+        margin: 30px 15px;
+    }
+
+    .about h2 {
+        font-size: 26px;
+    }
+
+    .about h3 {
+        font-size: 20px;
+    }
+}

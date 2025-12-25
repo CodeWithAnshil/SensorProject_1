@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sensor Fault Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">SensorFault<span>AI</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#prediction">Prediction</a></li>
+            <li><a href="#about">About Project</a></li>
+            
+        </ul>
+
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Sensor Fault Detection System</h1>
+            <p>
+                An AI-powered application to identify faulty wafer sensors using
+                Machine Learning models and real-world sensor data.
+            </p>
+
+            <div class="home-buttons">
+                <a href="#prediction" class="btn-primary">Start Prediction</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+
+            <div class="home-features">
+                <div class="feature-card">
+                    <h3>ML Based</h3>
+                    <p>Uses trained Machine Learning models for accurate detection</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>CSV Upload</h3>
+                    <p>Supports sensor data upload in CSV format</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Fast Prediction</h3>
+                    <p>Instant fault detection with optimized pipelines</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Section -->
+    <section class="container" id="prediction">
+        <div class="content">
+            <h1>Sensor Fault Detection System</h1>
+            <p>
+                Upload sensor CSV data to predict whether the wafer sensor is
+                <strong>Good</strong> or <strong>Faulty</strong> using Machine Learning.
+            </p>
+
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <div class="upload-card">
+
+                    <div class="dropzone">
+                        <img src="http://100dayscss.com/codepen/upload.svg" alt="upload" />
+                        <p>Drag & Drop CSV file here</p>
+                        <span>or</span>
+                        <label class="file-label">
+                            Browse File
+                            <input type="file" name="file" accept=".csv" required>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn">Predict Fault</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+    <h2>About Sensor Fault Detection</h2>
+
+    <p>
+        Sensor Fault Detection system is a Machine Learning based application
+        designed to identify faulty sensors in wafer manufacturing processes.
+    </p>
+
+    <h3>Problem Statement</h3>
+    <p>
+        In semiconductor manufacturing, faulty sensors can produce incorrect
+        readings which may lead to production defects and financial loss.
+    </p>
+
+    <h3>Solution Approach</h3>
+    <p>
+        This system uses historical sensor data in CSV format and applies
+        trained Machine Learning models to classify sensors as
+        <strong>Good</strong> or <strong>Faulty</strong>.
+    </p>
+
+    <h3>Technology Stack</h3>
+    <ul>
+        <li>Python & Machine Learning</li>
+        <li>Flask Framework</li>
+        <li>HTML, CSS</li>
+        <li>Git & GitHub</li>
+    </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Sensor Fault Detection | Machine Learning Project</p>
+    </footer>
+
+</body>
+</html>

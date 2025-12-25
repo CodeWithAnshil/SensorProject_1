@@ -5,7 +5,7 @@ import pandas as pd
 from zipfile import Path
 from pymongo import MongoClient
 from src.constant import *
-from src.util.main_util import  MainUtils
+from src.util.main_utils import  MainUtils
 from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
