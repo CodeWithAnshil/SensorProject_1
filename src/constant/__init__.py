@@ -6,7 +6,7 @@ MONGO_DATABASE_NAME = 'sensors'
 MONGO_COLLECTION_NAME = 'waferfault'
 
 TARGET_COLUMN = 'quality'
-MONGO_DB_URL = "mongodb+srv://anshilmaurya888_db_user:1234Ansh@cluster0.nrurchl.mongodb.net/"
+MONGO_DB_URL = os.getenv("MONGODB_URI")
 
 MODEL_FILE_NAME = "model"
 MODEL_FILE_EXTENSION = ".pkl"

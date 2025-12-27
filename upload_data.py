@@ -1,9 +1,10 @@
 from pymongo.mongo_client import MongoClient
 import json
 import pandas as pd
+import os
 
 # URL
-url = "mongodb+srv://anshilmaurya888_db_user:1234Ansh@cluster0.nrurchl.mongodb.net/"
+url = os.getenv("MONGODB_URI")
 # Create a client and connect to server
 client = MongoClient(url)
 

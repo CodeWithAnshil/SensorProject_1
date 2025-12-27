@@ -1,0 +1,96 @@
+name: workflows
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'  
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  integration:
+    name: Continuous Integration 
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        user: actions/checkout@v3
+
+      - name: Lint code
+        run: echo "Linting repository"
+
+      - name: Run unit tests
+        run: echo "Running unit tests"
+
+  built-and-push-ecr-image:
+    name: Continuous Delivery
+    needs: integration
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        user: actions/checkout@v3
+
+      - name: Install Utilities
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y jq unzip
+
+      - name: Configure aws credentials
+        user: aws-actions/configure-aws-credentials@v1
+        wirh: 
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRETED_ACCESS_KEY}}
+          aws-region: ${{secrets.AWS_DEFAULT_REGION}}
+
+      - name: Login to Amazon ECR
+        id:   login-ecr
+        user: aws-actions/amazon-ecr-login@v1
+
+      - name: Build,tag, and push image to Amazon ECR
+        id: build-image
+        env: 
+          IMAGE_TAG: latest  
+        run: |
+          # Build a docker container and
+          # push it to ECR so that it can
+          # be deployed to ECR
+          docker built -t ${{secrets.AWS_ECR_REPO_URI}}:$IMAGE_TAG .
+          docker push ${{secrets.AWS_ECR_REPO_URI}}:$IMAGE_TAG 
+  
+  Continuous-Deployment:
+    needs: build-and-push-ecr-image
+    run-on: self-hosted 
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v3
+
+     - name: Configure aws credentials
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRETED_ACCESS_KEY}}
+          aws-region: ${{secrets.AWS_DEFAULT_REGION}}
+      
+     - name: Login to Amazon ECR
+       id: login-ecr
+       user: aws-actions/amazon-ecr-login@v1
+
+     - name: Pull latest images
+       run: |
+         docker pull ${{secrets.AWA_ECR_REPO_URI}}:latest 
+       user: aws-actions/amazon-ecr-login@v1
+
+     - name: Run docker image to serve users
+       run: |
+         docker run -d -p 8080:8080 --name=sensor -e 'MONGO_DB_URL=${{secrets.MONGO_DB_URL}}' -e 'AWS_ACCESS_KEY_ID=${{secrets.AWS_ACCESS_KEY_ID}}' -e 'AWS_SECRETED_ACCESS_KEY=${{secrets.AWS_SECRETED_ACCESS_KEY}}' -e 'AWS_DEFAULT_REGION=${{secrets.AWS_DEFAULT_REGION}}' sensor:latest
+
+     - name: Clean previous images and containers
+       run: |
+         docker system prune -f
+       
+
+
+          
